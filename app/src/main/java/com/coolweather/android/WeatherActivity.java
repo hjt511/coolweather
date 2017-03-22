@@ -1,5 +1,6 @@
 package com.coolweather.android;
 
+
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
@@ -127,8 +128,6 @@ public class WeatherActivity extends AppCompatActivity {
                             editor.putString("weather", responseText);
                             editor.apply();
                             showWeatherInfo(weather);
-                            Intent intent = new Intent(this, AutoUpdateService.class);
-                            startService(intent);
                         } else {
                             Toast.makeText(WeatherActivity.this, "获得天气信息失败",
                                     Toast.LENGTH_SHORT).show();
@@ -190,6 +189,8 @@ public class WeatherActivity extends AppCompatActivity {
         carWashText.setText(carWash);
         sportText.setText(sport);
         weatherLayout.setVisibility(View.VISIBLE);
+        Intent intent = new Intent(this, AutoUpdateService.class);
+        startService(intent);
 
     }
 
